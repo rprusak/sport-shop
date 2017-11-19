@@ -34,6 +34,11 @@ const ProductSchema = new Schema({
     default: 0,
     min: 0,
     max: 100
+  },
+  image: {
+    type: String,
+    required: true,
+    default: 'http://placehold.it/700x300'
   }
 });
 
