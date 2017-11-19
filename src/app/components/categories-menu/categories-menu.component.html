@@ -2,12 +2,9 @@
   <h3><span class="oi oi-menu"></span>&nbsp;Categories:</h3>
   <ul class="nav nav-pills flex-column">
     <li class="nav-item" *ngFor="let category of this.categories">
-      <a class="nav-link" routerLink='/category/{{category.name}}'   routerLinkActive="active">{{category.name}}</a>
-      <ul class="nav flex-column" style="padding-left: 10px" *ngIf="category.subcategories.length > 0">
-        <li class="nav-item" *ngFor="let subcategory of category.subcategories">
-          <a class="nav-link" routerLink='/category/{{category.name}}/subcategory/{{subcategory}}' routerLinkActive="active">{{subcategory}}</a>
-        </li>
-      </ul>
+      <a class="nav-link" routerLink='/category/{{category.link}}' routerLinkActive="active">
+        {{category.name}}
+      </a>
     </li>
   </ul>
 </div>
