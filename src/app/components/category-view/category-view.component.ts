@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+import {ProductsService} from '../../services/products-service/products.service';
+import {Product} from '../../common/product';
 
 @Component({
   selector: 'app-category-view',
@@ -6,10 +10,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-view.component.css']
 })
 export class CategoryViewComponent implements OnInit {
+  categoryName = '';
+  products: Array<Product> = [];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private productsService: ProductsService) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((value: ParamMap) => {
+      this.categoryName = value.get('category');
+      this.productsService.getProductsFromCategory(this.categoryName).subscribe(
+        data => {
+          this.products = data;
+          console.log(this.products);
+        },
+        error => {
+          console.log(error.message);
+        }
+      );
+    });
   }
-
 }

@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { CategoryViewComponent } from './components/category-view/category-view.component';
 import { CartViewComponent } from './components/cart-view/cart-view.component';
+import {ProductsService} from "./services/products-service/products.service";
 
 const appRoutes: Routes = [
   {
@@ -78,6 +79,9 @@ const appRoutes: Routes = [
       appRoutes
     ),
     HttpClientModule
+  ],
+  providers: [
+    ProductsService
   ],
   bootstrap: [AppComponent]
 })
