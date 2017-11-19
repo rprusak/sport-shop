@@ -40,14 +40,11 @@ const appRoutes: Routes = [
     component: CategoryViewComponent
   },
   {
-    path: 'category/:category/subcategory/:subcategory',
-    component: CategoryViewComponent
-  },
-  {
     path: 'cart',
     component: CartViewComponent
   },
-  { path: '',
+  {
+    path: '',
     redirectTo: '/home',
     pathMatch: 'full'
   },

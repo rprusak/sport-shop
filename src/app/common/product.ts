@@ -1,8 +1,10 @@
 export interface Product {
-   name: string;
-   description: string;
-   price: number;
-   category: string;
-   discounted: boolean;
-   discount: number;
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  category: string;
+  discounted: boolean;
+  discount: number;
+  image: string;
 }
