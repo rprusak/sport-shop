@@ -15,6 +15,8 @@ import { ProductViewComponent } from './components/product-view/product-view.com
 import { CategoryViewComponent } from './components/category-view/category-view.component';
 import { CartViewComponent } from './components/cart-view/cart-view.component';
 import { ProductsService } from './services/products-service/products.service';
+import {CartService} from './services/cart-service/cart.service';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
 
 const appRoutes: Routes = [
   {
@@ -22,7 +24,7 @@ const appRoutes: Routes = [
     component: HomeViewComponent
   },
   {
-    path: 'product',
+    path: 'products/:id',
     component: ProductViewComponent
   },
   {
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     ProductViewComponent,
     CategoryViewComponent,
-    CartViewComponent
+    CartViewComponent,
+    CartStatusComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [
-    ProductsService
+    ProductsService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import {ProductsService} from '../../services/products-service/products.service';
-import {Product} from '../../common/product';
+import { ProductsService } from '../../services/products-service/products.service';
+import { Product } from '../../common/product';
+import {routerNgProbeToken} from '@angular/router/src/router_module';
+import {CartService} from "../../services/cart-service/cart.service";
 
 @Component({
   selector: 'app-category-view',
@@ -13,7 +15,8 @@ export class CategoryViewComponent implements OnInit {
   categoryName = '';
   products: Array<Product> = [];
 
-  constructor(private route: ActivatedRoute, private productsService: ProductsService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private productsService: ProductsService,
+              private cartService: CartService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((value: ParamMap) => {
@@ -28,5 +31,13 @@ export class CategoryViewComponent implements OnInit {
         }
       );
     });
+  }
+
+  onAddToCartButtonClicked(product: Product) {
+    this.cartService.addProduct(product);
+  }
+
+  onMoreInfoButtonClicked(product: Product) {
+    this.router.navigate(['/products/' + product._id]);
   }
 }

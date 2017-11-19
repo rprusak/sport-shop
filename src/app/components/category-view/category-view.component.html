@@ -18,15 +18,16 @@
           <div class="col-md-8" style="position: relative">
             <h4>{{product.name}}</h4>
             <p>{{product.description}}</p>
-            <div style="position: absolute; bottom: 0; left: 0; width: 100%; text-align: right">
-              <button class="btn btn-success" ><span class="oi oi-cart"></span>&nbsp;{{product.price | currency:'PLN':'symbol'}}</button>
-              <button class="btn btn-primary" >Więcej</button>
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; text-align: right; margin-top: 100px">
+              <button class="btn btn-success" (click)="onAddToCartButtonClicked(product)"><span class="oi oi-cart"></span>&nbsp;{{product.price | currency:'PLN':'symbol'}}</button>
+              <button class="btn btn-primary" (click)="onMoreInfoButtonClicked(product)">Więcej</button>
             </div>
           </div>
         </div>
         <hr>
       </div>
 
+      <!--TODO paginacja-->
       <!--&lt;!&ndash; Pagination &ndash;&gt;-->
       <!--<ul class="pagination justify-content-center">-->
         <!--<li class="page-item">-->
