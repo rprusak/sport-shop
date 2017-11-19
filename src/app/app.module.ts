@@ -10,26 +10,16 @@ import { HomeViewComponent } from './components/home-view/home-view.component';
 import { CategoriesMenuComponent } from './components/categories-menu/categories-menu.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { PromotionsComponent } from './components/promotions/promotions.component';
-import { ContactViewComponent } from './components/contact-view/contact-view.component';
-import { AboutViewComponent } from './components/about-view/about-view.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { CategoryViewComponent } from './components/category-view/category-view.component';
 import { CartViewComponent } from './components/cart-view/cart-view.component';
-import {ProductsService} from "./services/products-service/products.service";
+import { ProductsService } from './services/products-service/products.service';
 
 const appRoutes: Routes = [
   {
     path: 'home',
     component: HomeViewComponent
-  },
-  {
-    path: 'contact',
-    component: ContactViewComponent
-  },
-  {
-    path: 'about',
-    component: AboutViewComponent
   },
   {
     path: 'product',
@@ -63,8 +53,6 @@ const appRoutes: Routes = [
     CategoriesMenuComponent,
     CarouselComponent,
     PromotionsComponent,
-    ContactViewComponent,
-    AboutViewComponent,
     PageNotFoundComponent,
     ProductViewComponent,
     CategoryViewComponent,
