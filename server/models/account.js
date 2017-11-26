@@ -9,6 +9,18 @@ const Account = new Schema({
     trim: true,
     minLength: 3
   },
+  name: {
+    type: String,
+    trim: true,
+    minLength: 3,
+    uppercase: true
+  },
+  surname: {
+    type: String,
+    trim: true,
+    minLength: 3,
+    uppercase: true
+  },
   email: {
     type: String,
     trim: true,

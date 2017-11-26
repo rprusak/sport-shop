@@ -3,12 +3,18 @@ const passport = require('passport');
 const Account = require('../models/account');
 const router = express.Router();
 
-router.post('/register', function(req, res, next) {
-  Account.register(new Account({ username : req.body.username}), req.body.password, (err, account) => {
+router.post('/register', function(req, res) {
+  console.log(req.body);
+  req.body.admin = false;
+  Account.register(new Account(req.body), req.body.password, function(err, account) {
     if (err)
-      next(err);
+      return res.status(401).send({status: err.message});
 
-    res.send({status: "created user " + req.body.username});
+    res.send({status: "Successfully created account " + account.username});
+
+    // passport.authenticate('local')(req, res, function () {
+    //   res.send('ok');
+    // });
   });
 });
 

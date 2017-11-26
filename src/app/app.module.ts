@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,6 +18,10 @@ import { CartViewComponent } from './components/cart-view/cart-view.component';
 import { ProductsService } from './services/products-service/products.service';
 import {CartService} from './services/cart-service/cart.service';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { LoginViewComponent } from './components/login-view/login-view.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { RegistrationService } from './services/registration/registration.service';
 
 const appRoutes: Routes = [
   {
@@ -34,6 +39,10 @@ const appRoutes: Routes = [
   {
     path: 'cart',
     component: CartViewComponent
+  },
+  {
+    path: 'login',
+    component: LoginViewComponent
   },
   {
     path: '',
@@ -59,10 +68,14 @@ const appRoutes: Routes = [
     ProductViewComponent,
     CategoryViewComponent,
     CartViewComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    LoginViewComponent,
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes
     ),
@@ -70,7 +83,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     ProductsService,
-    CartService
+    CartService,
+    RegistrationService
   ],
   bootstrap: [AppComponent]
 })
