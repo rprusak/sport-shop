@@ -22,6 +22,7 @@ import { LoginViewComponent } from './components/login-view/login-view.component
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { RegistrationService } from './services/registration/registration.service';
+import { ProductsListComponent } from './components/products-list/products-list.component';
 
 const appRoutes: Routes = [
   {
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
     CartStatusComponent,
     LoginViewComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,

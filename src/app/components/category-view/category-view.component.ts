@@ -27,17 +27,9 @@ export class CategoryViewComponent implements OnInit {
           console.log(this.products);
         },
         error => {
-          console.log(error.message);
+          alert(error.message);
         }
       );
     });
-  }
-
-  onAddToCartButtonClicked(product: Product) {
-    this.cartService.addProduct(product);
-  }
-
-  onMoreInfoButtonClicked(product: Product) {
-    this.router.navigate(['/products/' + product._id]);
   }
 }
