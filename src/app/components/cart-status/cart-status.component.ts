@@ -13,11 +13,23 @@ export class CartStatusComponent implements OnInit {
 
   ngOnInit() {
     this.cartService.productAdded.subscribe(value => {
-      this.itemsCount = this.cartService.getAllProducts().length;
+      const items = this.cartService.getAllProducts();
+      let count = 0;
+      items.forEach(products => {
+        count += products.length;
+      });
+
+      this.itemsCount = count;
     });
 
     this.cartService.productDeleted.subscribe(value => {
-      this.itemsCount = this.cartService.getAllProducts().length;
+      const items = this.cartService.getAllProducts();
+      let count = 0;
+      items.forEach(products => {
+        count += products.length;
+      });
+
+      this.itemsCount = count;
     });
   }
 
