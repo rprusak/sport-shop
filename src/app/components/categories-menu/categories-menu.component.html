@@ -7,7 +7,7 @@
       <li class="list-group-item" *ngFor="let category of this.categories"
           routerLinkActive="bg-success" [routerLinkActiveOptions]="{exact: true}"  style="border-radius: 0px!important;">
         <a  routerLink='/category/{{category.link}}' routerLinkActive="text-white ">
-          {{category.name}}
+          <span class="oi oi-tag"></span>&nbsp;{{category.name}}
         </a>
       </li>
     </ul>

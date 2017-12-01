@@ -1,0 +1,14 @@
+#wizardFooter {
+  background-color: red;
+}
+
+#wizardFooterLeft {
+  width: 50%;
+  float: left;
+}
+
+#wizardFooterRight {
+  width: 50%;
+  float: right;
+  text-align: right;
+}

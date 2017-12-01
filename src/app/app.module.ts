@@ -23,6 +23,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { RegistrationService } from './services/registration/registration.service';
 import { ProductsListComponent } from './components/products-list/products-list.component';
+import { CheckoutViewComponent } from './components/checkout-view/checkout-view.component';
+import { OrderWizardComponent } from './components/order-wizard/order-wizard.component';
 
 const appRoutes: Routes = [
   {
@@ -44,6 +46,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginViewComponent
+  },
+  {
+    path: 'checkout',
+    component: CheckoutViewComponent
   },
   {
     path: '',
@@ -73,7 +79,9 @@ const appRoutes: Routes = [
     LoginViewComponent,
     LoginComponent,
     RegistrationComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    CheckoutViewComponent,
+    OrderWizardComponent
   ],
   imports: [
     BrowserModule,

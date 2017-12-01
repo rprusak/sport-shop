@@ -56,6 +56,6 @@ export class CartViewComponent implements OnInit {
   }
 
   checkout() {
-    alert('checkout');
+    this.router.navigate(['/checkout']);
   }
 }

@@ -1,0 +1,96 @@
+<div class="card rounded-0">
+  <div class="card-header bg-dark text-white rounded-0">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <span class="nav-link" [ngClass]="{'active': state === State.USER_DATA}">
+          Dane zamawiąjącego
+        </span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link" [ngClass]="{'active': state === State.DELIVERY}">
+          Dostawa
+        </span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link" [ngClass]="{'active': state === State.PAYMENT}">
+          Płatność
+        </span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link" [ngClass]="{'active': state === State.SUMMARY}">
+          Koniec
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body rounded-0">
+    <div class="wizardBody" [ngSwitch]="state">
+      <div *ngSwitchCase="State.USER_DATA">
+        <form>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div *ngSwitchCase="State.DELIVERY">
+        <form>
+          <div class="form-group row">
+            <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Sposób dostawy</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div *ngSwitchCase="State.PAYMENT">
+        <form>
+          <div class="form-group row">
+            <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Sposób zapłaty</label>
+            <div class="col-sm-8">
+              <select class="form-control" >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div *ngSwitchCase="State.SUMMARY">
+        podsumowanie
+      </div>
+    </div>
+    <div id="wizardFooter">
+      <div id="wizardFooterLeft">
+        <button type="button" class="btn btn-primary" (click)="goToPreviousPage()" *ngIf="state != State.USER_DATA">
+          <span class="oi oi-arrow-thick-left"></span>&nbsp;Wstecz
+        </button>
+      </div>
+      <div id="wizardFooterRight">
+        <button type="button" class="btn btn-primary" (click)="goToNextPage()" *ngIf="state != State.SUMMARY">
+          Dalej&nbsp;<span class="oi oi-arrow-thick-right"></span>
+        </button>
+        <button type="button" class="btn btn-success" (click)="makeOrder()" *ngIf="state == State.SUMMARY">
+          <span class="oi oi-check"></span>&nbsp;Złóż zamówienie
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
