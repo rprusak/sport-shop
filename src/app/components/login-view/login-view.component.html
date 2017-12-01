@@ -1,10 +1,35 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      <app-login></app-login>
-    </div>
-    <div class="col-lg-6">
-     <app-registration></app-registration>
+  <div class="row justify-content-center">
+    <div class="card rounded-0">
+      <div class="card-body">
+        <div class="text-center">
+          <img style="border-radius: 100%; margin-bottom: 20px" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <div class="form-group row">
+            <label for="userNameInput" class="col-4">Użytkownik:</label>
+            <div class="col-8">
+              <input type="text" class="form-control" id="userNameInput" name="username"
+                     placeholder="Wprowadź użytkownika" [(ngModel)]="userName" #username="ngModel"
+                     required pattern="^[a-zA-Z0-9]+$">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="userPasswordInput" class="col-4">Hasło:</label>
+            <div class="col-8">
+              <input type="password" class="form-control" id="userPasswordInput" name="userpassword"
+                     placeholder="Wprowadź hasło" [(ngModel)]="userPassword" #userpassword="ngModel"
+                     required minlength="8" pattern="^[a-zA-Z0-9]+$">
+            </div>
+          </div>
+          <div style="width: 100%; text-align: center">
+            <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">
+              <span class="oi oi-check"></span>&nbsp;Zaloguj się
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

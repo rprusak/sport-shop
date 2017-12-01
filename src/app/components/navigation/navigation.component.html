@@ -11,12 +11,32 @@
             <span class="oi oi-home"></span>&nbsp;Strona główna
           </a>
         </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" routerLink="/panel">
+            <span class="oi oi-terminal"></span>&nbsp;Panel administratora
+          </a>
+        </li>
       </ul>
       <div class="my-2 my-lg-0">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" routerLink="/profile">
+              <span class="oi oi-person"></span>&nbsp;Profil
+            </a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" routerLink="/logout">
+              <span class="oi oi-account-logout"></span>Wyloguj
+            </a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link" routerLink="/login">
-              <span class="oi oi-account-login"></span>&nbsp;Logowanie/Rejestracja
+              <span class="oi oi-account-login"></span>&nbsp;Logowanie
+            </a>
+          </li>
+          <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" routerLink="/register">
+              <span class="oi oi-task"></span>&nbsp;Rejestracja
             </a>
           </li>
           <app-cart-status></app-cart-status>

@@ -12,4 +12,8 @@ export class LoginViewComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    alert("submit");
+  }
+
 }

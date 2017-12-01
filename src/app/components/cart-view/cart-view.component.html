@@ -12,7 +12,7 @@
           {{product.item.price * product.count | currency:'PLN':'symbol'}}
         </div>
         <div class="col-lg-2" style="text-align: right">
-          <button type="button" class="btn btn-danger btn-sm" (click)="deleteProduct(product.item)">
+          <button type="button" class="btn btn-danger" (click)="deleteProduct(product.item)">
             <span class="oi oi-trash"></span>
           </button>
         </div>
@@ -21,17 +21,17 @@
     <div class="card-footer bg-dark" style="border-radius: 0px!important;">
       <div class="row">
         <div class="col-6">
-          <button type="button" class="btn btn-info btn-sm" (click)="goBackToShop()">
+          <button type="button" class="btn btn-info" (click)="goBackToShop()">
             <span class="oi oi-arrow-circle-left"></span>&nbsp;Wróć do sklepu
           </button>
-          <button type="button" class="btn btn-danger btn-sm"
+          <button type="button" class="btn btn-danger"
                   *ngIf="this.products.length > 0"
                   (click)="clearCart()">
             <span class="oi oi-x"></span>&nbsp;Wyczyść koszyk
           </button>
         </div>
         <div class="col-6" style="text-align: right">
-          <button type="button" class="btn btn-success btn-sm"
+          <button type="button" class="btn btn-success"
                   *ngIf="this.products.length > 0"
                   (click)="checkout()">
             <span class="oi oi-credit-card"></span>&nbsp;Zapłać {{ totalPrice | currency:'PLN':'symbol'}}

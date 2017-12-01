@@ -16,15 +16,17 @@ import { ProductViewComponent } from './components/product-view/product-view.com
 import { CategoryViewComponent } from './components/category-view/category-view.component';
 import { CartViewComponent } from './components/cart-view/cart-view.component';
 import { ProductsService } from './services/products-service/products.service';
-import {CartService} from './services/cart-service/cart.service';
+import { CartService } from './services/cart-service/cart.service';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { LoginViewComponent } from './components/login-view/login-view.component';
-import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { RegistrationService } from './services/registration/registration.service';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { CheckoutViewComponent } from './components/checkout-view/checkout-view.component';
 import { OrderWizardComponent } from './components/order-wizard/order-wizard.component';
+import { AdminPanelViewComponent } from './components/admin-panel-view/admin-panel-view.component';
+import { RegisterViewComponent } from './components/register-view/register-view.component';
+import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 
 const appRoutes: Routes = [
   {
@@ -48,8 +50,20 @@ const appRoutes: Routes = [
     component: LoginViewComponent
   },
   {
+    path: 'register',
+    component: RegisterViewComponent
+  },
+  {
     path: 'checkout',
     component: CheckoutViewComponent
+  },
+  {
+    path: 'panel',
+    component: AdminPanelViewComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileViewComponent
   },
   {
     path: '',
@@ -77,11 +91,13 @@ const appRoutes: Routes = [
     CartViewComponent,
     CartStatusComponent,
     LoginViewComponent,
-    LoginComponent,
     RegistrationComponent,
     ProductsListComponent,
     CheckoutViewComponent,
-    OrderWizardComponent
+    OrderWizardComponent,
+    AdminPanelViewComponent,
+    RegisterViewComponent,
+    ProfileViewComponent
   ],
   imports: [
     BrowserModule,

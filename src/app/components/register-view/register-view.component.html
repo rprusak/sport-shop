@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="card rounded-0" style="margin-bottom: 100px">
+    <div class="card-body">
+      <h5>Aby się zarejestrować, wypełnij poniższy formularz:</h5>
+      <hr>
+      <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
+        <div class="row">
+          <!--left form column-->
+          <div class="col-lg-6">
+            <!--username-->
+            <div class="form-group row">
+              <label for="usernameInput" class="col-4">Nazwa użytkownika:</label>
+              <div class="col-8">
+                <input type="text" class="form-control" id="usernameInput" placeholder="Podaj nazwę użytkownika"
+                       [ngClass]="{
+                                  'is-invalid': !username.valid && !username.pristine,
+                                  'is-valid': username.valid && !username.pristine
+                     }"
+                       name="username" [(ngModel)]="account.username" #username="ngModel"
+                       required pattern="^[a-zA-Z0-9]+$" minlength="3">
+                <div class="invalid-feedback">
+                  Nazwa użytkownika jest wymagana. Musi być dłuższa niż 3 znaki.
+                </div>
+              </div>
+            </div> <!--username-->
+            <!--email-->
+            <div class="form-group row">
+              <label for="emailInput" class="col-4">Email:</label>
+              <div class="col-8">
+                <input type="email" class="form-control" id="emailInput" placeholder="Podaj swój adres email"
+                       [ngClass]="{
+                                  'is-invalid': !useremail.valid && !useremail.pristine,
+                                  'is-valid': useremail.valid && !useremail.pristine
+                               }"
+                       name="useremail" [(ngModel)]="account.email" #useremail="ngModel"
+                       required>
+                <div class="invalid-feedback">
+                  Email użytkownika jest wymagany.
+                </div>
+              </div>
+            </div> <!--email-->
+            <!--name-->
+            <div class="form-group row">
+              <label for="nameInput" class="col-4">Imię:</label>
+              <div class="col-8">
+                <input type="text" class="form-control " id="nameInput" placeholder="Podaj swoje imie"
+                       [ngClass]="{
+                                  'is-invalid': !userfirstname.valid && !userfirstname.pristine,
+                                  'is-valid': userfirstname.valid && !userfirstname.pristine
+                               }"
+                       name="userfirstname" [(ngModel)]="account.name" #userfirstname="ngModel"
+                       required>
+                <div class="invalid-feedback">
+                  Imię użytkownika jest wymagane.
+                </div>
+              </div>
+            </div> <!--name-->
+            <!--surname-->
+            <div class="form-group row">
+              <label for="surnameInput" class="col-4">Nazwisko:</label>
+              <div class="col-8">
+                <input type="text" class="form-control" id="surnameInput" placeholder="Podaj swoje nazwisko"
+                       name="usersurname" [(ngModel)]="account.surname" #usersurname="ngModel"
+                       [ngClass]="{
+                                  'is-invalid': !usersurname.valid && !usersurname.pristine,
+                                  'is-valid': usersurname.valid && !usersurname.pristine
+                                  }"
+                       required>
+                <div class="invalid-feedback">
+                  Nazwisko użytkownika jest wymagane.
+                </div>
+              </div>
+            </div> <!--surname-->
+          </div> <!--left form column-->
+          <!--right form column-->
+          <div class="col-lg-6">
+            <!--city-->
+            <div class="form-group row">
+              <label for="cityInput" class="col-4">Miasto:</label>
+              <div class="col-8">
+                <input type="text" class="form-control" id="cityInput" placeholder="Podaj swoje miasto"
+                       name="city" [(ngModel)]="account.city" #city="ngModel"
+                       [ngClass]="{'is-invalid': !city.valid && !city.pristine,'is-valid': city.valid && !city.pristine}"
+                       required>
+                <div class="invalid-feedback">
+                  Miasto jest wymagane.
+                </div>
+              </div>
+            </div> <!--city-->
+            <!--address-->
+            <div class="form-group row">
+              <label for="addressInput" class="col-4">Adres:</label>
+              <div class="col-8">
+                <input type="text" class="form-control" id="addressInput" placeholder="Podaj swój adres"
+                       name="address" [(ngModel)]="account.address" #address="ngModel"
+                       [ngClass]="{
+                                'is-invalid': !address.valid && !address.pristine,
+                                'is-valid': address.valid && !address.pristine
+                                }"
+                       required>
+                <div class="invalid-feedback">
+                  Adress jest wymagany.
+                </div>
+              </div>
+            </div> <!--address-->
+            <!--password-->
+            <div class="form-group row">
+              <label for="passwordInput" class="col-4">Hasło:</label>
+              <div class="col-8">
+                <input type="password" class="form-control" id="passwordInput" placeholder="Podaj twoje hasło"
+                       name="userpassword" [(ngModel)]="account.password" #userpassword="ngModel"
+                       [ngClass]="{
+                                'is-invalid': !userpassword.valid && !userpassword.pristine,
+                                'is-valid': userpassword.valid && !userpassword.pristine
+                                }"
+                       required pattern="^[a-zA-Z0-9]+$" minlength="8">
+                <div class="invalid-feedback">
+                  Hasło jest wymagane. Minimalna długość 8 znaków. Może zawierać jedynie małe litery, wielkie litery oraz cyfry.
+                </div>
+              </div>
+            </div> <!--password-->
+            <!--password repeat-->
+            <div class="form-group row">
+              <label for="passwordRepeatInput" class="col-4">Powtórz hasło:</label>
+              <div class="col-8">
+                <input type="password" class="form-control" id="passwordRepeatInput" placeholder="Podaj ponownie twoje hasło"
+                       name="userpasswordrepeat" [(ngModel)]="userPasswordRepeat" #userpasswordrepeat="ngModel"
+                       [ngClass]="{
+                                'is-invalid': (!userpasswordrepeat.valid || (userpassword.value != userpasswordrepeat.value))
+                                              && !userpassword.pristine,
+                                'is-valid': userpasswordrepeat.valid && !userpasswordrepeat.pristine
+                             }"
+                       required pattern="^[a-zA-Z0-9]+$" minlength="8">
+                <div class="invalid-feedback">
+                  Hasło musi być identyczne jak poprzednie.
+                </div>
+              </div>
+            </div>
+          </div> <!--right form column-->
+        </div>
+        <div style="width: 100%; text-align: right">
+          <button type="submit" class="btn btn-success" [disabled]="!registrationForm.form.valid">
+            <span class="oi oi-check"></span>&nbsp;Zarajestruj się
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
