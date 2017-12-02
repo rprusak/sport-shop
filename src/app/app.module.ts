@@ -27,6 +27,8 @@ import { OrderWizardComponent } from './components/order-wizard/order-wizard.com
 import { AdminPanelViewComponent } from './components/admin-panel-view/admin-panel-view.component';
 import { RegisterViewComponent } from './components/register-view/register-view.component';
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
+import { SearchMenuComponent } from './components/search-menu/search-menu.component';
+import { CategoriesService } from './services/categories/categories.service';
 
 const appRoutes: Routes = [
   {
@@ -97,7 +99,8 @@ const appRoutes: Routes = [
     OrderWizardComponent,
     AdminPanelViewComponent,
     RegisterViewComponent,
-    ProfileViewComponent
+    ProfileViewComponent,
+    SearchMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,8 @@ const appRoutes: Routes = [
   providers: [
     ProductsService,
     CartService,
-    RegistrationService
+    RegistrationService,
+    CategoriesService
   ],
   bootstrap: [AppComponent]
 })

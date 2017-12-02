@@ -1,0 +1,53 @@
+<div class="card border-0 rounded-0">
+  <div class="card-header bg-dark text-white rounded-0">
+    <span class="oi oi-magnifying-glass"></span>&nbsp;Wyszukiwanie
+  </div>
+  <div class="card-body rounded-0">
+    <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+      <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action border-0"
+                *ngFor="let category of categories" (click)="onCategoryClicked(category)"
+                [ngClass]="{'list-group-item-success': selectedCategories.has(category.name)}">
+          <span class="oi oi-tag"></span>&nbsp;{{category.name}}
+        </button>
+      </div>
+
+      <div class="form-group" style="margin-top: 10px;">
+        <label for="productNameInput">Nazwa produktu:</label>
+        <input type="email" class="form-control" id="productNameInput" placeholder="Podaj nazwę produktu"
+               name="productname" [(ngModel)]="productName" #productname="ngModel">
+      </div>
+
+      <div class="form-group" style="margin-top: 10px;">
+        <label>Zakres cenowy:</label>
+        <div class="row">
+          <div class="col-6">
+            <input type="number" class="form-control" id="minimumPriceInput" placeholder="Minimum" min="0"
+                   name="minimumprice" [(ngModel)]="minimumPrice" #minimumprice="ngModel">
+          </div>
+          <div class="col-6">
+            <input type="number" class="form-control" id="maximumPriceInput" placeholder="Maximum" min="0"
+                   name="maximumprice" [(ngModel)]="maximumPrice" #maximumprice="ngModel">
+          </div>
+        </div>
+        <div class="text-danger" *ngIf="minimumPrice != null && maximumPrice != null && minimumPrice >= maximumPrice">
+          Cena minimalna musi być mniejsza niż maksymalna!
+        </div>
+      </div>
+
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="discountcheck" [(ngModel)]="discounted" #discountcheck="ngModel">
+          Pokaż tylko przecenione produkty
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-success" style="width: 100%"
+              [disabled]="minimumPrice != null && maximumPrice != null && minimumPrice >= maximumPrice">
+        <span class="oi oi-check"></span>Szukaj
+      </button>
+
+    </form>
+
+  </div>
+</div>
