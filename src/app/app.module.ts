@@ -29,6 +29,11 @@ import { SearchMenuComponent } from './components/search-menu/search-menu.compon
 import { CategoriesService } from './services/categories/categories.service';
 import { ProductsViewComponent } from './components/products-view/products-view.component';
 import { AuthenticationService } from './services/authentication/authentication.service';
+import { AdminPanelMenuComponent } from './components/admin-panel-menu/admin-panel-menu.component';
+import { AdminPanelProductsComponent } from './components/admin-panel-products/admin-panel-products.component';
+import { AdminPanelNewProductComponent } from './components/admin-panel-new-product/admin-panel-new-product.component';
+import { AdminPanelOrdersComponent } from './components/admin-panel-orders/admin-panel-orders.component';
+import { AdminPanelOfferComponent } from './components/admin-panel-offer/admin-panel-offer.component';
 
 const appRoutes: Routes = [
   {
@@ -62,6 +67,22 @@ const appRoutes: Routes = [
   {
     path: 'panel',
     component: AdminPanelViewComponent
+  },
+  {
+    path: 'panel/products',
+    component: AdminPanelProductsComponent
+  },
+  {
+    path: 'panel/newproduct',
+    component: AdminPanelNewProductComponent
+  },
+  {
+    path: 'panel/offer',
+    component: AdminPanelOfferComponent
+  },
+  {
+    path: 'panel/orders',
+    component: AdminPanelOrdersComponent
   },
   {
     path: 'profile',
@@ -99,7 +120,12 @@ const appRoutes: Routes = [
     RegisterViewComponent,
     ProfileViewComponent,
     SearchMenuComponent,
-    ProductsViewComponent
+    ProductsViewComponent,
+    AdminPanelMenuComponent,
+    AdminPanelProductsComponent,
+    AdminPanelNewProductComponent,
+    AdminPanelOrdersComponent,
+    AdminPanelOfferComponent
   ],
   imports: [
     BrowserModule,
