@@ -23,9 +23,11 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
 });
 
 router.get('/login', function(req, res){
-  if (req.isAuthenticated())
+  if (req.isAuthenticated()) {
+    console.log("ddd");
+    console.log(req.user);
     res.status(200).send({status: "authenticated"});
-  else
+  } else
     res.status(400).send({status: "unauthenticated"})
 });
 

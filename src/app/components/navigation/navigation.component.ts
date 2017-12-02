@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -9,7 +10,7 @@ import { AuthenticationService } from '../../services/authentication/authenticat
 export class NavigationComponent implements OnInit {
   private isAuthenticated = false;
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.authenticationService.authenticationStateChanged.subscribe(authenticated => {
@@ -17,4 +18,13 @@ export class NavigationComponent implements OnInit {
     });
   }
 
+  logout() {
+    this.authenticationService.logout().subscribe(value => {
+      alert('Zostałeś wylogowany');
+      this.router.navigate(['/home']);
+    }, error => {
+      alert("error");
+      console.log(error);
+    });
+  }
 }

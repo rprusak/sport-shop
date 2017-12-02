@@ -5,7 +5,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthenticationService {
-  private url = '/api/login';
+  private loginUrl = '/api/login';
+  private logoutUrl = '/api/logout';
 
   // Observable source
   private authenticationStateChangeSource = new Subject<boolean>();
@@ -20,8 +21,15 @@ export class AuthenticationService {
       password: password
     };
 
-    return this.http.post(this.url, body).map((response: Response) => {
+    return this.http.post(this.loginUrl, body).map((response: Response) => {
       this.authenticationStateChangeSource.next(true);
+      return response;
+    });
+  }
+
+  logout() {
+    return this.http.get(this.logoutUrl).map((response: Response) => {
+      this.authenticationStateChangeSource.next(false);
       return response;
     });
   }
