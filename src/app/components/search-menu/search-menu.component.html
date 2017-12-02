@@ -7,7 +7,7 @@
       <div class="list-group">
         <button type="button" class="list-group-item list-group-item-action border-0"
                 *ngFor="let category of categories" (click)="onCategoryClicked(category)"
-                [ngClass]="{'list-group-item-success': selectedCategories.has(category.name)}">
+                [ngClass]="{'list-group-item-success': isCategorySelected(category)}">
           <span class="oi oi-tag"></span>&nbsp;{{category.name}}
         </button>
       </div>

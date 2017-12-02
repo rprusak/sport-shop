@@ -29,6 +29,7 @@ import { RegisterViewComponent } from './components/register-view/register-view.
 import { ProfileViewComponent } from './components/profile-view/profile-view.component';
 import { SearchMenuComponent } from './components/search-menu/search-menu.component';
 import { CategoriesService } from './services/categories/categories.service';
+import { ProductsViewComponent } from './components/products-view/products-view.component';
 
 const appRoutes: Routes = [
   {
@@ -40,8 +41,8 @@ const appRoutes: Routes = [
     component: ProductViewComponent
   },
   {
-    path: 'category/:category',
-    component: CategoryViewComponent
+    path: 'products',
+    component: ProductsViewComponent
   },
   {
     path: 'cart',
@@ -100,7 +101,8 @@ const appRoutes: Routes = [
     AdminPanelViewComponent,
     RegisterViewComponent,
     ProfileViewComponent,
-    SearchMenuComponent
+    SearchMenuComponent,
+    ProductsViewComponent
   ],
   imports: [
     BrowserModule,
