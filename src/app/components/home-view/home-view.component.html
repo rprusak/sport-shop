@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
-      <app-search-menu></app-search-menu>
+      <app-search-menu (onSearch)="handleSearchQuery($event)"></app-search-menu>
     </div>
     <div class="col-lg-8">
       <app-carousel></app-carousel>

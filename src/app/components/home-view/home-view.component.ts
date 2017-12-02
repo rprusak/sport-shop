@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchQuery } from '../../common/search-query';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home-view',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+
   }
 
+  handleSearchQuery(query: SearchQuery) {
+    this.router.navigate(['/products'], { queryParams: query});
+  }
 }

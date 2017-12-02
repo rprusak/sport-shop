@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CategoriesService } from '../../services/categories/categories.service';
 import { Category } from '../../common/category';
-import { Router } from '@angular/router';
+import { SearchQuery } from '../../common/search-query';
 
 @Component({
   selector: 'app-search-menu',
@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
 })
 export class SearchMenuComponent implements OnInit {
   categories: Array<Category> = [];
+  @Output() onSearch: EventEmitter<SearchQuery> = new EventEmitter();
 
-  @Input('selected') selectedCategories: Array<String> = [];
+  @Input('selected') selectedCategories: Array<string> = [];
   @Input() productName = null;
   @Input() minimumPrice = null;
   @Input() maximumPrice = null;
   @Input() discounted = null;
 
-  constructor(private categoriesService: CategoriesService, private router: Router) { }
+  constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
     this.categories = this.categoriesService.getCategories();
@@ -44,27 +45,14 @@ export class SearchMenuComponent implements OnInit {
   }
 
   onSubmit() {
-    const params = {};
-    if (this.productName != null && this.productName.length > 0) {
-      params['productName'] = this.productName;
-    }
+    const query: SearchQuery = new SearchQuery();
 
-    if (this.minimumPrice != null) {
-      params['minimumPrice'] = this.minimumPrice;
-    }
+    query.productName = this.productName;
+    query.maximumPrice = this.maximumPrice;
+    query.minimumPrice = this.minimumPrice;
+    query.discounted = this.discounted;
+    query.categories = this.selectedCategories;
 
-    if (this.maximumPrice != null) {
-      params['maximumPrice'] = this.maximumPrice;
-    }
-
-    if (this.discounted != null && this.discounted) {
-      params['discounted'] = true;
-    }
-
-    if (this.selectedCategories.length > 0) {
-      params['category']  = this.selectedCategories;
-    }
-
-    this.router.navigate(['/products'], {queryParams: params});
+    this.onSearch.emit(query);
   }
 }

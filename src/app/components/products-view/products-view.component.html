@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-lg-4">
       <app-search-menu [productName]="productName" [minimumPrice]="minimumPrice" [maximumPrice]="maximumPrice"
-                       [selected]="selectedCategories" [discounted]="discounted"></app-search-menu>
+                       [selected]="selectedCategories" [discounted]="discounted" (onSearch)="handleSearchQuery($event)">
+      </app-search-menu>
     </div>
     <div class="col-lg-8">
       <div class="card rounded-0 border-0">

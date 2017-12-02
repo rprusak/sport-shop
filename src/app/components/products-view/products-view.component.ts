@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Category } from '../../common/category';
 import { Product } from '../../common/product';
 import { ProductsService } from '../../services/products/products.service';
+import {SearchQuery} from "../../common/search-query";
 
 @Component({
   selector: 'app-products-view',
@@ -24,8 +25,8 @@ export class ProductsViewComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       this.route.queryParams.subscribe((params: Params) => {
         console.log(params);
-        if (params.hasOwnProperty('category')) {
-          this.selectedCategories = params['category'];
+        if (params.hasOwnProperty('categories')) {
+          this.selectedCategories = params['categories'];
         }
 
         if (params.hasOwnProperty('productName')) {
@@ -52,5 +53,14 @@ export class ProductsViewComponent implements OnInit {
   getProductsFromService() {
     this.productsService.getProducts(this.selectedCategories, this.productName, this.minimumPrice, this.maximumPrice,
       this.discounted).subscribe((products) => this.products = products, error => alert(error.message));
+  }
+
+  handleSearchQuery(query: SearchQuery) {
+    this.selectedCategories = query.categories;
+    this.productName = query.productName;
+    this.minimumPrice = query.minimumPrice;
+    this.maximumPrice = query.maximumPrice;
+    this.discounted = query.discounted;
+    this.getProductsFromService();
   }
 }
