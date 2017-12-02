@@ -11,15 +11,7 @@
           Produkty({{products.length}})
         </div>
       </div>
-
-
-      {{selectedCategories.length}}
-      {{productName}}
-      {{minimumPrice}}
-      {{maximumPrice}}
-      {{discounted}}
-
-      <app-products-list [products]="products"></app-products-list>
+      <app-products-list [products]="products" *ngIf="products.length > 0"></app-products-list>
     </div>
   </div>
 </div>

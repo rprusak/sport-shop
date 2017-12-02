@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Category } from '../../common/category';
 import { Product } from '../../common/product';
 import { ProductsService } from '../../services/products/products.service';
-import {SearchQuery} from "../../common/search-query";
+import {SearchQuery} from '../../common/search-query';
 
 @Component({
   selector: 'app-products-view',

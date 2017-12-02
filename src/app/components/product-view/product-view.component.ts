@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
-import {ProductsService} from '../../services/products/products.service';
-import {Product} from '../../common/product';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ProductsService } from '../../services/products/products.service';
+import { Product } from '../../common/product';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-product-view',
@@ -11,7 +12,7 @@ import {Product} from '../../common/product';
 export class ProductViewComponent implements OnInit {
   private product: Product = null;
 
-  constructor(private route: ActivatedRoute, private productsService: ProductsService) { }
+  constructor(private route: ActivatedRoute, private productsService: ProductsService, private cartService: CartService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((value: ParamMap) => {
@@ -27,7 +28,7 @@ export class ProductViewComponent implements OnInit {
     });
   }
 
-  onAddToCartButtonClicked() {
-    alert('dodaj do koszyka!');
+  addToCart() {
+    this.cartService.addProduct(this.product);
   }
 }

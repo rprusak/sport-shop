@@ -1,32 +1,37 @@
-<div  *ngFor="let product of displayedProducts" style="height: 300px">
-  <div class="row">
-    <div class="col-md-4">
-      <img class="img-fluid rounded" src='{{product.image}}' style="max-width: 200px; max-height: 200px">
-    </div>
-    <div class="col-md-8" style="position: relative">
-      <h4>{{product.name}}</h4>
-      <p>{{product.description}}</p>
-      <div style="position: absolute; bottom: 0; left: 0; width: 100%; text-align: right; margin-top: 100px">
-        <button class="btn btn-success" (click)="addToCart(product)"><span class="oi oi-cart"></span>&nbsp;{{product.price | currency:'PLN':'symbol'}}</button>
-        <button class="btn btn-primary" (click)="showProductDetails(product)">Więcej</button>
+<div style="margin-top: 10px;">
+  <div *ngFor="let product of displayedProducts" style="height: 300px; margin-bottom: 10px">
+    <div class="row">
+      <div class="col-lg-6">
+        <img class="img-fluid rounded" src='{{product.image}}' style="max-width: 300px; max-height: 250px">
+      </div>
+      <div class="col-lg-6">
+        <h4>{{product.name}}</h4>
+        <p *ngIf="product.description.length <= 150">{{product.description}}</p>
+        <p *ngIf="product.description.length > 150">{{product.description  | slice:0:150}}...</p>
+        <div>
+          <button class="btn btn-success" (click)="addToCart(product)"><span class="oi oi-cart"></span>&nbsp;{{product.price | currency:'PLN':'symbol'}}</button>
+          <button class="btn btn-primary" (click)="showProductDetails(product)">
+            <span class="oi oi-info"></span>&nbsp;Więcej
+          </button>
+        </div>
       </div>
     </div>
+    <hr>
   </div>
-  <hr>
-</div>
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item" [ngClass]="{'disabled': activePage == 1}">
-      <span class="page-link" tabindex="-1" (click)="goToPreviousPage()">Previous</span>
-    </li>
-    <li class="page-item" *ngFor="let page of pages" [ngClass]="{'active': page == activePage}">
-      <span class="page-link" (click)="selectPage(page)">
-        {{page}}
-      </span>
-    </li>
-    <li class="page-item" [ngClass]="{'disabled': activePage == maxPage}">
-      <span class="page-link" (click)="goToNextPage()">Next</span>
-    </li>
-  </ul>
-</nav>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [ngClass]="{'disabled': activePage == 1}">
+        <span class="page-link" tabindex="-1" (click)="goToPreviousPage()">Previous</span>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [ngClass]="{'active': page == activePage}">
+        <span class="page-link" (click)="selectPage(page)">
+          {{page}}
+        </span>
+      </li>
+      <li class="page-item" [ngClass]="{'disabled': activePage == maxPage}">
+        <span class="page-link" (click)="goToNextPage()">Next</span>
+      </li>
+    </ul>
+  </nav>
+</div>
