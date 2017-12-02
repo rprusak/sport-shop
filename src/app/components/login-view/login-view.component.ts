@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-view',
@@ -6,14 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-view.component.css']
 })
 export class LoginViewComponent implements OnInit {
+  private userName = '';
+  private userPassword = '';
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    alert("submit");
+    this.authenticationService.authenticate(this.userName, this.userPassword).subscribe(
+      value => {
+        this.router.navigate(['/home']);
+      },
+      error => {
+        console.log(error);
+        alert("error");
+      });
   }
 
 }

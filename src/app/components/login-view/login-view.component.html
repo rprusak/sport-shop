@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="card rounded-0">
+    <div class="card rounded-0 col-lg-6">
       <div class="card-body">
         <div class="text-center">
           <img style="border-radius: 100%; margin-bottom: 20px" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
@@ -12,7 +12,14 @@
             <div class="col-8">
               <input type="text" class="form-control" id="userNameInput" name="username"
                      placeholder="Wprowadź użytkownika" [(ngModel)]="userName" #username="ngModel"
-                     required pattern="^[a-zA-Z0-9]+$">
+                     required pattern="^[a-zA-Z0-9]+$" minlength="3"
+                     [ngClass]="{
+                                  'is-invalid': !username.valid && !username.pristine,
+                                  'is-valid': username.valid && !username.pristine
+                     }">
+              <div class="invalid-feedback">
+                Nazwa użytkownika jest wymagana. Musi być dłuższa niż 3 znaki.
+              </div>
             </div>
           </div>
           <div class="form-group row">
@@ -20,7 +27,14 @@
             <div class="col-8">
               <input type="password" class="form-control" id="userPasswordInput" name="userpassword"
                      placeholder="Wprowadź hasło" [(ngModel)]="userPassword" #userpassword="ngModel"
-                     required minlength="8" pattern="^[a-zA-Z0-9]+$">
+                     required minlength="8" pattern="^[a-zA-Z0-9]+$"
+                     [ngClass]="{
+                                'is-invalid': !userpassword.valid && !userpassword.pristine,
+                                'is-valid': userpassword.valid && !userpassword.pristine
+                                }">
+              <div class="invalid-feedback">
+                Hasło jest wymagane. Minimalna długość 8 znaków. Może zawierać jedynie małe litery, wielkie litery oraz cyfry.
+              </div>
             </div>
           </div>
           <div style="width: 100%; text-align: center">

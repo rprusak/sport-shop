@@ -37,7 +37,6 @@ export class ProductsService {
     const options = {
       params: params
     };
-    console.log(options);
 
     return this.http.get(this.url, options);
   }

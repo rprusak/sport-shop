@@ -24,7 +24,6 @@ export class ProductsViewComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       this.route.queryParams.subscribe((params: Params) => {
-        console.log(params);
         if (params.hasOwnProperty('categories')) {
           this.selectedCategories = params['categories'];
         }

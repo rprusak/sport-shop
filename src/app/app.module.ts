@@ -28,6 +28,7 @@ import { ProfileViewComponent } from './components/profile-view/profile-view.com
 import { SearchMenuComponent } from './components/search-menu/search-menu.component';
 import { CategoriesService } from './services/categories/categories.service';
 import { ProductsViewComponent } from './components/products-view/products-view.component';
+import { AuthenticationService } from './services/authentication/authentication.service';
 
 const appRoutes: Routes = [
   {
@@ -112,7 +113,8 @@ const appRoutes: Routes = [
     ProductsService,
     CartService,
     RegistrationService,
-    CategoriesService
+    CategoriesService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
