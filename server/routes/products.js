@@ -3,6 +3,29 @@ const router = express.Router();
 const Product = require('../models/product');
 
 router.get('/products', (req, res, next) => {
+  if (req.query.hasOwnProperty('name')) {
+    req.query.name = new RegExp(req.query.name, "i");
+  }
+
+  if (req.query.hasOwnProperty('minimumPrice')) {
+    if (!req.query.hasOwnProperty('price')) {
+      req.query.price = {};
+    }
+
+    req.query.price.$gt = req.query.minimumPrice;
+    delete req.query.minimumPrice;
+  }
+
+  if (req.query.hasOwnProperty('maximumPrice')) {
+    if (!req.query.hasOwnProperty('price')) {
+      req.query.price = {};
+    }
+
+    req.query.price.$lt = req.query.maximumPrice;
+    delete req.query.maximumPrice;
+  }
+
+  console.log(req.query);
   Product.find(req.query).then(products => {
     res.send(products)
   }).catch(next);

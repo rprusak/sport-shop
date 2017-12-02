@@ -8,15 +8,13 @@ import { AppComponent } from './components/app/app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeViewComponent } from './components/home-view/home-view.component';
-import { CategoriesMenuComponent } from './components/categories-menu/categories-menu.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { PromotionsComponent } from './components/promotions/promotions.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
-import { CategoryViewComponent } from './components/category-view/category-view.component';
 import { CartViewComponent } from './components/cart-view/cart-view.component';
-import { ProductsService } from './services/products-service/products.service';
-import { CartService } from './services/cart-service/cart.service';
+import { ProductsService } from './services/products/products.service';
+import { CartService } from './services/cart/cart.service';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { LoginViewComponent } from './components/login-view/login-view.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -85,12 +83,10 @@ const appRoutes: Routes = [
     NavigationComponent,
     FooterComponent,
     HomeViewComponent,
-    CategoriesMenuComponent,
     CarouselComponent,
     PromotionsComponent,
     PageNotFoundComponent,
     ProductViewComponent,
-    CategoryViewComponent,
     CartViewComponent,
     CartStatusComponent,
     LoginViewComponent,

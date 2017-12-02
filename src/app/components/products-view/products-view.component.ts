@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Category } from '../../common/category';
+import { Product } from '../../common/product';
+import { ProductsService } from '../../services/products/products.service';
 
 @Component({
   selector: 'app-products-view',
@@ -8,13 +10,15 @@ import { Category } from '../../common/category';
   styleUrls: ['./products-view.component.css']
 })
 export class ProductsViewComponent implements OnInit {
-  selectedCategories: Array<String> = [];
+  products: Array<Product> = [];
+
+  selectedCategories: Array<string> = [];
   productName = null;
   minimumPrice = null;
   maximumPrice = null;
   discounted = null;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private productsService: ProductsService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
@@ -39,7 +43,14 @@ export class ProductsViewComponent implements OnInit {
         if (params.hasOwnProperty('discounted')) {
           this.discounted = params['discounted'];
         }
+
+        this.getProductsFromService();
       });
     });
+  }
+
+  getProductsFromService() {
+    this.productsService.getProducts(this.selectedCategories, this.productName, this.minimumPrice, this.maximumPrice,
+      this.discounted).subscribe((products) => this.products = products, error => alert(error.message));
   }
 }
