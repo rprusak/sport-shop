@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Product } from '../../common/product';
 import { isNullOrUndefined } from 'util';
+import {del} from "selenium-webdriver/http";
 
 @Injectable()
 export class ProductsService {
@@ -10,7 +11,7 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  getProducts(categories: Array<string>, name: string, minimumPrice: number, maximumPrice: number, discounted: boolean): Observable<Array<Product>> {
+  getProducts(categories?: Array<string>, name?: string, minimumPrice?: number, maximumPrice?: number, discounted?: boolean): Observable<Array<Product>> {
     let params = new HttpParams();
     if (!isNullOrUndefined(categories) && categories.length > 0) {
       categories.forEach(value => {
@@ -41,15 +42,12 @@ export class ProductsService {
     return this.http.get(this.url, options);
   }
 
-  getProductsFromCategory(category: string): Observable<Array<Product>> {
-    const params = new HttpParams().set('category', category);
-    const options = {
-      params: params
-    };
-    return this.http.get(this.url, options);
-  }
-
   getProductById(id: string): Observable<Product> {
     return this.http.get(this.url + id);
+  }
+
+  addProduct(product: Product) {
+    delete product._id;
+    return this.http.post(this.url, product);
   }
 }

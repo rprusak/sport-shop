@@ -4,7 +4,29 @@
       <app-admin-panel-menu></app-admin-panel-menu>
     </div>
     <div class="col-lg-8">
-      admin panel products
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Nazwa Produktu</th>
+          <th scope="col">Cena</th>
+          <th scope="col">Kategoria</th>
+          <th scope="col">Akcja</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of products">
+          <td>{{p.name}}</td>
+          <td>{{p.price}}</td>
+          <td>{{p.category}}</td>
+          <td>
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-info" (click)="editProduct(p)">Edytuj</button>
+              <button type="button" class="btn btn-danger" (click)="deleteProduct(p)">Usuń</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
