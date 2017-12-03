@@ -15,16 +15,29 @@ export class AdminPanelProductsComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
-      this.productsService.getProducts().subscribe(
-        (products: Array<Product>) => {
-          this.products = products;
-        }
-      );
+      this.loadProducts();
     });
   }
 
+  loadProducts() {
+    this.productsService.getProducts().subscribe(
+      (products: Array<Product>) => {
+        this.products = products;
+      }
+    );
+  }
+
   deleteProduct(product: Product) {
-    alert("delete product " + product._id);
+    this.productsService.deleteProduct(product).subscribe(
+      value => {
+        alert("Usunięto produkt!");
+        this.loadProducts();
+      },
+      error => {
+        console.log(error);
+        alert("Błąd!");
+      }
+    );
   }
 
   editProduct(product: Product) {

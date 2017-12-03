@@ -78,8 +78,14 @@
           <label for="imageInput" class="col-lg-4">Obraz</label>
           <div class="col-lg-8">
             <input type="text" class="form-control" id="imageInput" placeholder="Podaj link obrazu"
-                   name="image" [(ngModel)]="product.image" #image="ngModel">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                   name="image" [(ngModel)]="product.image" #image="ngModel"
+                   [ngClass]="{
+                                'is-invalid': !discount.valid && !discount.pristine,
+                                'is-valid': discount.valid && !discount.pristine
+                                }">
+            <div class="invalid-feedback">
+              Obraz jest wymagany!
+            </div>
           </div>
         </div>
 

@@ -50,4 +50,8 @@ export class ProductsService {
     delete product._id;
     return this.http.post(this.url, product);
   }
+
+  deleteProduct(product: Product) {
+    return this.http.delete(this.url+ product._id);
+  }
 }
