@@ -37,6 +37,9 @@ const OrderSchema =  new Schema({
     type: String,
     enum: ['Nowe', 'Zrealizowane'],
     default: 'Nowe'
+  },
+  comment: {
+    type: String
   }
 });
 

@@ -21,4 +21,16 @@ router.get('/orders/:id', (req, res, next) => {
   }).catch(next);
 });
 
+router.delete('/orders/:id', (req, res, next) => {
+  Order.findByIdAndRemove({_id: req.params.id}).then(products => {
+    res.send(products)
+  }).catch(next);
+});
+
+router.put('/orders/:id', (req, res, next) => {
+  Order.findByIdAndUpdate(req.params.id, req.body).then(products => {
+    res.send(products)
+  }).catch(next);
+});
+
 module.exports = router;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from '../../common/order';
-import {OrdersService} from '../../services/orders/orders.service';
+import { OrdersService } from '../../services/orders/orders.service';
 
 @Component({
   selector: 'app-admin-panel-orders',
@@ -11,7 +11,7 @@ import {OrdersService} from '../../services/orders/orders.service';
 export class AdminPanelOrdersComponent implements OnInit {
   private orders: Array<Order> = [];
 
-  constructor(private route: ActivatedRoute, private ordersService: OrdersService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private ordersService: OrdersService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
@@ -31,6 +31,20 @@ export class AdminPanelOrdersComponent implements OnInit {
     );
   }
 
+  editOrder(order: Order) {
+    this.router.navigate(['/panel/orders/' + order._id]);
+  }
 
+  deleteOrder(order: Order) {
+    this.ordersService.deleteOrder(order._id).subscribe(
+      success => {
+        alert("Usunięto zamówienie.");
+        this.loadOrders();
+      }, error => {
+        alert("Błąd");
+        console.log(error);
+      }
+    );
+  }
 }
 

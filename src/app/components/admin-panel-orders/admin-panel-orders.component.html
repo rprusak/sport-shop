@@ -24,8 +24,12 @@
           <td>{{order.status}}</td>
           <td>
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-info" (click)="editOrder(order)">Szczegóły</button>
-              <button type="button" class="btn btn-danger" (click)="deleteOrder(order)">Usuń</button>
+              <button type="button" class="btn btn-info" (click)="editOrder(order)">
+                <span class="oi oi-wrench"></span>&nbsp;Szczegóły
+              </button>
+              <button type="button" class="btn btn-danger" (click)="deleteOrder(order)">
+                <span class="oi oi-trash"></span>&nbsp;Usuń
+              </button>
             </div>
           </td>
         </tr>
