@@ -4,6 +4,20 @@
       <app-admin-panel-menu></app-admin-panel-menu>
     </div>
     <div class="col-lg-8">
+      {{orderStatus}}
+      <div class="form-group row">
+        <label for="statusSelect" class="col-lg-4">Status zamówienia:</label>
+        <div class="col-lg-8">
+          <select class="form-control" id="statusSelect" name="status" [(ngModel)]="orderStatus">
+            <option>Nowe</option>
+            <option>Zrealizowane</option>
+          </select>
+          <div class="invalid-feedback">
+            Spsób płatności jest wymagany!
+          </div>
+        </div>
+      </div>
+
       <table class="table table-striped">
         <thead class="bg-dark text-white">
         <tr>
@@ -16,7 +30,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let order of orders">
+        <tr *ngFor="let order of orders | myfilter:orderStatus">
           <td>{{order.name}}</td>
           <td>{{order.surname}}</td>
           <td>{{order.city}}</td>

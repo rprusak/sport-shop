@@ -10,6 +10,7 @@ import { OrdersService } from '../../services/orders/orders.service';
 })
 export class AdminPanelOrdersComponent implements OnInit {
   private orders: Array<Order> = [];
+  private orderStatus = 'Nowe';
 
   constructor(private route: ActivatedRoute, private router: Router, private ordersService: OrdersService) { }
 

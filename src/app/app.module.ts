@@ -37,6 +37,7 @@ import { AdminPanelOfferComponent } from './components/admin-panel-offer/admin-p
 import { AdminPanelEditProductComponent } from './components/admin-panel-edit-product/admin-panel-edit-product.component';
 import { OrdersService } from './services/orders/orders.service';
 import { AdminPanelEditOrderComponent } from './components/admin-panel-edit-order/admin-panel-edit-order.component';
+import { MyFilterPipe } from './pipes/my-filter-pipe.pipe';
 
 const appRoutes: Routes = [
   {
@@ -138,7 +139,8 @@ const appRoutes: Routes = [
     AdminPanelOrdersComponent,
     AdminPanelOfferComponent,
     AdminPanelEditProductComponent,
-    AdminPanelEditOrderComponent
+    AdminPanelEditOrderComponent,
+    MyFilterPipe
   ],
   imports: [
     BrowserModule,
