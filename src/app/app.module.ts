@@ -35,6 +35,7 @@ import { AdminPanelNewProductComponent } from './components/admin-panel-new-prod
 import { AdminPanelOrdersComponent } from './components/admin-panel-orders/admin-panel-orders.component';
 import { AdminPanelOfferComponent } from './components/admin-panel-offer/admin-panel-offer.component';
 import { AdminPanelEditProductComponent } from './components/admin-panel-edit-product/admin-panel-edit-product.component';
+import { OrdersService } from './services/orders/orders.service';
 
 const appRoutes: Routes = [
   {
@@ -146,7 +147,8 @@ const appRoutes: Routes = [
     CartService,
     RegistrationService,
     CategoriesService,
-    AuthenticationService
+    AuthenticationService,
+    OrdersService
   ],
   bootstrap: [AppComponent]
 })

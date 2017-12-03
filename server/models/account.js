@@ -12,14 +12,12 @@ const Account = new Schema({
   name: {
     type: String,
     trim: true,
-    minLength: 3,
-    uppercase: true
+    minLength: 3
   },
   surname: {
     type: String,
     trim: true,
-    minLength: 3,
-    uppercase: true
+    minLength: 3
   },
   email: {
     type: String,
@@ -34,7 +32,6 @@ const Account = new Schema({
   },
   city: {
     type: String,
-    uppercase: true,
     required: true,
     minLength: 2
   },

@@ -45,4 +45,14 @@ export class CartService {
   getAllProducts(): Map<String, Array<Product>> {
     return this.products;
   }
+
+  getProductsValue() {
+    let value = 0;
+
+    this.products.forEach(item => {
+      value += item.length * item[0].price;
+    });
+
+    return value;
+  }
 }

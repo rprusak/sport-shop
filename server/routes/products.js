@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Product = require('../models/product');
+const Product = require('../models/product').Product;
 
 router.get('/products', (req, res, next) => {
   if (req.query.hasOwnProperty('name')) {

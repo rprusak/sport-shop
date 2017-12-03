@@ -1,35 +1,126 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-9">
-      <app-order-wizzard></app-order-wizzard>
-    </div>
-    <div class="col-lg-3">
-
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
       <div class="card rounded-0">
-        <div class="card-header bg-dark text-white">
-          Podsumowanie zamówienia
+        <div class="card-header bg-dark text-white rounded-0">
+          Formularz zamówienia
         </div>
         <div class="card-body">
-          <table class="table">
-            <tbody>
-            <tr>
-              <td>Cena:</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Dostawa:</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>Do zapłaty:</td>
-              <td></td>
-            </tr>
-            </tbody>
-          </table>
+          <form (ngSubmit)="onSubmit()" #orderForm="ngForm">
+            <div class="form-group row">
+              <label for="nameInput" class="col-lg-4">Wartość zamówienia:</label>
+              <div class="col-lg-8">
+                <p>{{orderValue | currency:'PLN':'symbol'}}</p>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="nameInput" class="col-lg-4">Imię:</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" id="nameInput" placeholder="Wprowadź swoje imię" required
+                       name="name" [(ngModel)]="order.name" #name="ngModel"
+                       [ngClass]="{
+                                'is-invalid': !name.valid && !name.pristine,
+                                'is-valid': name.valid && !name.pristine
+                                }">
+                <div class="invalid-feedback">
+                  Imię jest wymagane!
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="surnameInput" class="col-lg-4">Nazwisko:</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" id="surnameInput" placeholder="Wprowadź swoje nazwisko" required
+                       name="surname" [(ngModel)]="order.surname" #surname="ngModel"
+                       [ngClass]="{
+                                'is-invalid': !surname.valid && !surname.pristine,
+                                'is-valid': surname.valid && !surname.pristine
+                                }">
+                <div class="invalid-feedback">
+                  Nazwisko jest wymagane!
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="cityInput" class="col-lg-4">Miasto:</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" id="cityInput" placeholder="Wprowadź swoje miasto" required
+                       name="city" [(ngModel)]="order.city" #city="ngModel"
+                       [ngClass]="{
+                                'is-invalid': !city.valid && !city.pristine,
+                                'is-valid': city.valid && !city.pristine
+                                }">
+                <div class="invalid-feedback">
+                  Miasto jest wymagane!
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="adressInput" class="col-lg-4">Adres:</label>
+              <div class="col-lg-8">
+                <input type="text" class="form-control" id="adressInput" placeholder="Wprowadź swoje miasto" required
+                       name="address" [(ngModel)]="order.address" #address="ngModel"
+                       [ngClass]="{
+                                'is-invalid': !address.valid && !address.pristine,
+                                'is-valid': address.valid && !address.pristine
+                                }">
+                <div class="invalid-feedback">
+                  Adres jest wymagany!
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="commentInput" class="col-lg-4">Komentarz do zamówienia:</label>
+              <div class="col-lg-8">
+                <textarea class="form-control" id="commentInput" rows="3"
+                          name="address" [(ngModel)]="order.comment" #address="ngModel">
+                </textarea>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="deliverySelect" class="col-lg-4">Sposób dostawy:</label>
+              <div class="col-lg-8">
+                <select class="form-control" id="deliverySelect"
+                        name="delivery" [(ngModel)]="order.delivery" #delivery="ngModel">
+                  <option>Poczta Polska</option>
+                  <option>Kurier DHL</option>
+                  <option>Inpost</option>
+                </select>
+                <div class="invalid-feedback">
+                  Spsób dostawy jest wymagany!
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="adressInput" class="col-lg-4">Sposób płatności:</label>
+              <div class="col-lg-8">
+                <select class="form-control" id="paymentSelect"
+                        name="payment" [(ngModel)]="order.payment" #payment="ngModel">
+                  <option>Płatność przy odbiorze</option>
+                  <option>Przelew</option>
+                </select>
+                <div class="invalid-feedback">
+                  Spsób płatności jest wymagany!
+                </div>
+              </div>
+            </div>
+
+            <div style="text-align: right">
+              <button type="submit" class="btn btn-success" [disabled]="!orderForm.form.valid">
+                <span class="oi oi-check"></span>Dodaj zamówienie
+              </button>
+            </div>
+
+          </form>
         </div>
       </div>
-
-
     </div>
   </div>
 </div>
