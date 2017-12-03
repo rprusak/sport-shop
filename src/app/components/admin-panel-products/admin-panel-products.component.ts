@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../common/product';
 import { ProductsService } from '../../services/products/products.service';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-panel-products',
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AdminPanelProductsComponent implements OnInit {
   private products: Array<Product> = [];
 
-  constructor(private productsService: ProductsService, private route: ActivatedRoute) { }
+  constructor(private productsService: ProductsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
@@ -41,7 +41,7 @@ export class AdminPanelProductsComponent implements OnInit {
   }
 
   editProduct(product: Product) {
-    alert("edit product " + product._id);
+    this.router.navigate(['/panel/products/' + product._id]);
   }
 
 

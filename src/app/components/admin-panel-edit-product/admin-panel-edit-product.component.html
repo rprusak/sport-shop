@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <app-admin-panel-menu></app-admin-panel-menu>
+    </div>
+    <div class="col-lg-8">
+      <form (ngSubmit)="onSubmit()" #newProductForm="ngForm" *ngIf="product">
+
+        <div class="form-group row">
+          <label for="productNameInput" class="col-lg-4">Nazwa produktu</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="productNameInput" placeholder="Wprowadź nazwę produktu"
+                   name="productname" [(ngModel)]="product.name" #productname="ngModel" required
+                   [ngClass]="{
+                                'is-invalid': !productname.valid && !productname.pristine,
+                                'is-valid': productname.valid && !productname.pristine
+                                }"
+            >
+            <div class="invalid-feedback">
+              Nazwa produktu jest wymagana!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="descriptionTextarea" class="col-lg-4">Opis</label>
+          <div class="col-lg-8">
+            <textarea class="form-control" id="descriptionTextarea" rows="3" required placeholder="Dodaj jakiś opis produktu"
+                      name="description" [(ngModel)]="product.description" #description="ngModel"
+                      [ngClass]="{
+                                'is-invalid': !description.valid && !description.pristine,
+                                'is-valid': description.valid && !description.pristine
+                                }"></textarea>
+            <div class="invalid-feedback">
+              Opis jest wymagany!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="categorySelect" class="col-lg-4">Kategoria</label>
+          <div class="col-lg-8">
+            <select class="form-control" id="categorySelect" required
+                    name="category" [(ngModel)]="product.category" #category="ngModel"
+                    [ngClass]="{
+                                'is-invalid': !category.valid && !category.pristine,
+                                'is-valid': category.valid && !category.pristine
+                                }">
+              <option>obuwie</option>
+              <option>odziez</option>
+              <option>sprzet</option>
+              <option>akcesoria</option>
+              <option>inne</option>
+            </select>
+            <div class="invalid-feedback">
+              Kategoria jest wymagana!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="priceInput" class="col-lg-4">Cena</label>
+          <div class="col-lg-8">
+            <input type="number" class="form-control" id="priceInput" placeholder="Wprowadź cenę produktu" required min="0"
+                   name="price" [(ngModel)]="product.price" #price="ngModel"
+                   [ngClass]="{
+                                'is-invalid': !price.valid && !price.pristine,
+                                'is-valid': price.valid && !price.pristine
+                                }">
+            <div class="invalid-feedback">
+              Cena jest wymagana!
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label for="imageInput" class="col-lg-4">Obraz</label>
+          <div class="col-lg-8">
+            <input type="text" class="form-control" id="imageInput" placeholder="Podaj link obrazu"
+                   name="image" [(ngModel)]="product.image" #image="ngModel"
+                   [ngClass]="{
+                                'is-invalid': !discount.valid && !discount.pristine,
+                                'is-valid': discount.valid && !discount.pristine
+                                }">
+            <div class="invalid-feedback">
+              Obraz jest wymagany!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-check row">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input"
+                   name="discounted" [(ngModel)]="product.discounted" #discounted="ngModel">
+            Przeceniony
+          </label>
+        </div>
+
+        <div class="form-group row">
+          <label for="priceInput" class="col-lg-4">Procent przeceny</label>
+          <div class="col-lg-8">
+            <input type="number" class="form-control" id="discountInput" placeholder="Wprowadź cenę produktu"
+                   min="0" max="100"
+                   name="discount" [(ngModel)]="product.discount" #discount="ngModel"
+                   [ngClass]="{
+                                'is-invalid': !discount.valid && !discount.pristine,
+                                'is-valid': discount.valid && !discount.pristine
+                                }">
+            <div class="invalid-feedback">
+              Produkt nie może być przeceniony bardziej niż 100%!
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: right">
+          <button type="submit" class="btn btn-primary" [disabled]="!newProductForm.form.valid">
+            <span class="oi oi-check"></span>Zapisz produkt
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

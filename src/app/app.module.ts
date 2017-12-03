@@ -34,6 +34,7 @@ import { AdminPanelProductsComponent } from './components/admin-panel-products/a
 import { AdminPanelNewProductComponent } from './components/admin-panel-new-product/admin-panel-new-product.component';
 import { AdminPanelOrdersComponent } from './components/admin-panel-orders/admin-panel-orders.component';
 import { AdminPanelOfferComponent } from './components/admin-panel-offer/admin-panel-offer.component';
+import { AdminPanelEditProductComponent } from './components/admin-panel-edit-product/admin-panel-edit-product.component';
 
 const appRoutes: Routes = [
   {
@@ -71,6 +72,10 @@ const appRoutes: Routes = [
   {
     path: 'panel/products',
     component: AdminPanelProductsComponent
+  },
+  {
+    path: 'panel/products/:id',
+    component: AdminPanelEditProductComponent
   },
   {
     path: 'panel/newproduct',
@@ -125,7 +130,8 @@ const appRoutes: Routes = [
     AdminPanelProductsComponent,
     AdminPanelNewProductComponent,
     AdminPanelOrdersComponent,
-    AdminPanelOfferComponent
+    AdminPanelOfferComponent,
+    AdminPanelEditProductComponent
   ],
   imports: [
     BrowserModule,

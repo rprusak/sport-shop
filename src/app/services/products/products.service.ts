@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Product } from '../../common/product';
 import { isNullOrUndefined } from 'util';
-import {del} from "selenium-webdriver/http";
+import {del} from 'selenium-webdriver/http';
 
 @Injectable()
 export class ProductsService {
@@ -52,6 +52,13 @@ export class ProductsService {
   }
 
   deleteProduct(product: Product) {
-    return this.http.delete(this.url+ product._id);
+    return this.http.delete(this.url + product._id);
   }
+
+  updateProduct(product: Product) {
+    const url = this.url + product._id;
+    delete product._id;
+    return this.http.put(url, product);
+  }
+
 }
