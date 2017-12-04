@@ -1,4 +1,5 @@
 export class Account {
+  _id?: string;
   username: string;
   name: string;
   surname: string;

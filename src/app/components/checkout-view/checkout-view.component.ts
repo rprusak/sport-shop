@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { CartService } from '../../services/cart/cart.service';
 import { Order } from '../../common/order';
 import { OrdersService } from '../../services/orders/orders.service';
+import {AuthenticationService} from "../../services/authentication/authentication.service";
+import {Account} from "../../common/account";
 
 @Component({
   selector: 'app-checkout-view',
@@ -22,11 +24,20 @@ export class CheckoutViewComponent implements OnInit {
   };
 
   constructor(private route: ActivatedRoute, private cartService: CartService, private ordersService: OrdersService,
-              private router: Router) { }
+              private router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       this.orderValue = this.cartService.getProductsValue();
+      this.authenticationService.getStatus().subscribe(
+        (account: Account) => {
+          this.order.name = account.name;
+          this.order.surname = account.surname;
+          this.order.city = account.city;
+          this.order.address = account.address;
+          this.order.userId = account._id;
+        }
+      );
     });
   }
 
