@@ -7,4 +7,5 @@ export interface Order {
   delivery: String;
   payment: String;
   status: String;
+  userId?: String;
 }

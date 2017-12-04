@@ -1,5 +1,45 @@
 <div class="container">
-  <p>
-    profile-view works!
-  </p>
+  <div class="col-lg-4">
+    <div *ngIf="account">
+      <div class="card border-0 rounded-0">
+        <div class="card-header rounded-0 bg-dark text-white">
+          <span class="oi oi-book"></span>&nbsp;Informacje o użytkowniku
+        </div>
+        <table class="table table-striped">
+          <tbody>
+          <tr>
+            <td>Użytkownik:</td>
+            <td>{{account.username}}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{account.email}}</td>
+          </tr>
+          <tr>
+            <td>Imie:</td>
+            <td>{{account.name}}</td>
+          </tr>
+          <tr>
+            <td>Nazwisko:</td>
+            <td>{{account.surname}}</td>
+          </tr>
+          <tr>
+            <td>Miasto:</td>
+            <td>{{account.city}}</td>
+          </tr>
+          <tr>
+            <td>Adres:</td>
+            <td>{{account.address}}</td>
+          </tr>
+          <tr>
+            <td>Administrator:</td>
+            <td>{{account.admin}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
 </div>

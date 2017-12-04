@@ -22,13 +22,11 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
   res.send({status: "authenticated"});
 });
 
-router.get('/login', function(req, res){
+router.get('/status', function(req, res){
   if (req.isAuthenticated()) {
-    console.log("ddd");
-    console.log(req.user);
-    res.status(200).send({status: "authenticated"});
+    res.status(200).send(req.user);
   } else
-    res.status(400).send({status: "unauthenticated"})
+    res.status(401).send({status: "unauthenticated"})
 });
 
 router.get('/logout', function(req, res) {

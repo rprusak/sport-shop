@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { Account } from '../../common/account';
 
 @Injectable()
 export class AuthenticationService {
@@ -32,6 +34,10 @@ export class AuthenticationService {
       this.authenticationStateChangeSource.next(false);
       return response;
     });
+  }
+
+  getStatus(): Observable<Account> {
+    return this.http.get('/api/status');
   }
 
 }

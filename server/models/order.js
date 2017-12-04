@@ -40,6 +40,9 @@ const OrderSchema =  new Schema({
   },
   comment: {
     type: String
+  },
+  userId: {
+    type: String
   }
 });
 
